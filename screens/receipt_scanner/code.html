@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SmartInventory - Receipt Scanner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c7c4d8",
+                    "primary-container": "#4f46e5",
+                    "surface-tint": "#4d44e3",
+                    "tertiary-container": "#885500",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-tertiary-container": "#ffd4a4",
+                    "secondary": "#006a61",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-surface": "#0b1c30",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#dce9ff",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface-variant": "#464555",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface": "#f8f9ff",
+                    "on-primary-fixed": "#0f0069",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-container": "#86f2e4",
+                    "outline": "#777587",
+                    "primary-fixed": "#e2dfff",
+                    "on-secondary-fixed-variant": "#005049",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "tertiary": "#684000",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-fixed": "#2a1700",
+                    "primary": "#3525cd",
+                    "on-secondary-fixed": "#00201d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#dad7ff",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-bright": "#f8f9ff",
+                    "secondary-fixed": "#89f5e7",
+                    "surface-variant": "#d3e4fe",
+                    "on-secondary-container": "#006f66",
+                    "on-background": "#0b1c30",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "unit": "4px",
+                    "gutter-mobile": "12px",
+                    "sm": "8px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "display-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "numeric-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "numeric-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>.camera-viewfinder {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuCXFoF9o1wwGUoxYoR1ALsaEPQfrjffSoxnQ-hsnN9YWDGLIx18-3VmlDTy13tMHlHTKgx70L8XalhE5w8kjYXJFbhVG7ANYtb876lfHzBlYrCQ-xlUxpV6D2HD28seBMUmwa8cYR14TWPCLgfAkRBI4Lh6x961XX6t6lxwCahXxtWa_yMMCD8wEefqOkpuxKyKcQJjAIn1feG2Co04ER7zsEfU7eptinR8EvHlhEltyuOgwlIhVw4xGFSqzb_xzM3foXpwVUiTgmo);
+    background-size: cover;
+    background-position: center
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between px-4 h-16 w-full">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white font-display-md">SmartInventory</h1>
+</div>
+<button class="transition-all duration-200 ease-in-out active:scale-95 p-2 rounded-full hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">notifications</span>
+</button>
+</header>
+<main class="pt-20 px-margin-mobile max-w-2xl mx-auto space-y-lg">
+<!-- Viewfinder Interface -->
+<section class="relative rounded-xl overflow-hidden aspect-[3/4] shadow-lg border border-outline-variant bg-black">
+<div class="absolute inset-0 camera-viewfinder" data-alt="A professional high-resolution camera viewfinder interface focused on a white commercial receipt laying on a clean wooden desk surface. The scene is illuminated with soft natural daylight coming from the side, creating subtle shadows. Digital UI overlays including green corner tracking brackets and a semi-transparent dark mask frame the receipt perfectly. The overall aesthetic is clean, corporate, and technologically sophisticated with a light-mode color palette.">
+<!-- Framing Overlay -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-3/4 h-3/4 border-2 border-white/50 rounded-lg relative">
+<div class="absolute -top-1 -left-1 w-6 h-6 border-t-4 border-l-4 border-primary rounded-tl-sm"></div>
+<div class="absolute -top-1 -right-1 w-6 h-6 border-t-4 border-r-4 border-primary rounded-tr-sm"></div>
+<div class="absolute -bottom-1 -left-1 w-6 h-6 border-b-4 border-l-4 border-primary rounded-bl-sm"></div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 border-b-4 border-r-4 border-primary rounded-br-sm"></div>
+</div>
+</div>
+<div class="absolute bottom-12 left-0 w-full flex flex-col items-center gap-lg">
+<p class="text-white font-label-md bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full">Align receipt within frame</p>
+<button class="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center active:scale-90 transition-transform">
+<div class="w-16 h-16 rounded-full bg-white shadow-lg"></div>
+</button>
+</div>
+<div class="absolute top-4 right-4 space-y-4">
+<button class="w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center">
+<span class="material-symbols-outlined">flash_on</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center">
+<span class="material-symbols-outlined">image</span>
+</button>
+</div>
+</div>
+</section>
+<!-- OCR Extraction Results (Secondary State) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg space-y-lg shadow-sm">
+<div class="flex justify-between items-center border-b border-outline-variant pb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-weight="fill">verified</span>
+<h2 class="font-headline-sm text-on-surface">Extraction Results</h2>
+</div>
+<button class="text-primary font-label-md hover:underline flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">edit</span>
+                    Manual Correction
+                </button>
+</div>
+<div class="grid grid-cols-2 gap-lg">
+<div class="space-y-1">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider">Store Name</p>
+<p class="font-body-lg text-on-surface font-semibold">Staples Office Supply</p>
+</div>
+<div class="space-y-1 text-right">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider">Date</p>
+<p class="font-body-lg text-on-surface">Oct 24, 2023</p>
+</div>
+</div>
+<div class="space-y-md">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider">Items List</p>
+<div class="space-y-sm">
+<div class="flex justify-between items-center py-sm border-b border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Ergonomic Office Chair</span>
+<span class="text-label-sm text-on-surface-variant">Qty: 1 • SKU: 98221</span>
+</div>
+<span class="font-numeric-lg text-on-surface text-lg">$249.00</span>
+</div>
+<div class="flex justify-between items-center py-sm border-b border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Wireless Mouse M510</span>
+<span class="text-label-sm text-on-surface-variant">Qty: 2 • SKU: 44102</span>
+</div>
+<span class="font-numeric-lg text-on-surface text-lg">$59.98</span>
+</div>
+<div class="flex justify-between items-center py-sm">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Premium Copy Paper (500ct)</span>
+<span class="text-label-sm text-on-surface-variant">Qty: 5 • SKU: 11094</span>
+</div>
+<span class="font-numeric-lg text-on-surface text-lg">$44.95</span>
+</div>
+</div>
+</div>
+<div class="bg-primary-fixed p-lg rounded-lg flex justify-between items-center">
+<span class="font-headline-sm text-on-primary-fixed">Total Amount</span>
+<span class="font-display-md text-primary">$353.93</span>
+</div>
+<div class="flex gap-md pt-md">
+<button class="flex-1 bg-outline-variant/20 text-on-surface-variant font-label-md py-3 rounded-xl border border-outline-variant hover:bg-outline-variant/30 transition-colors">
+                    Discard
+                </button>
+<button class="flex-1 bg-primary text-on-primary font-label-md py-3 rounded-xl shadow-md active:scale-95 transition-all">
+                    Confirm &amp; Save
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 rounded-t-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around items-center h-20 pb-safe px-6 w-full">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-['Inter'] text-[11px] font-medium">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-900/20 rounded-xl px-3 py-1 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+<span class="font-['Inter'] text-[11px] font-medium">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[11px] font-medium">Budget</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c7c4d8",
+                    "primary-container": "#4f46e5",
+                    "surface-tint": "#4d44e3",
+                    "tertiary-container": "#885500",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-tertiary-container": "#ffd4a4",
+                    "secondary": "#006a61",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-surface": "#0b1c30",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#dce9ff",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface-variant": "#464555",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface": "#f8f9ff",
+                    "on-primary-fixed": "#0f0069",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-container": "#86f2e4",
+                    "outline": "#777587",
+                    "primary-fixed": "#e2dfff",
+                    "on-secondary-fixed-variant": "#005049",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "tertiary": "#684000",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-fixed": "#2a1700",
+                    "primary": "#3525cd",
+                    "on-secondary-fixed": "#00201d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#dad7ff",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-bright": "#f8f9ff",
+                    "secondary-fixed": "#89f5e7",
+                    "surface-variant": "#d3e4fe",
+                    "on-secondary-container": "#006f66",
+                    "on-background": "#0b1c30",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "unit": "4px",
+                    "gutter-mobile": "12px",
+                    "sm": "8px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "display-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "numeric-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "numeric-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9ff;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(12, 1fr);
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between px-4 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white overflow-hidden shadow-sm">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young male executive in a bright, clean office setting. He is wearing a minimalist navy blue sweater over a white collared shirt, reflecting a modern corporate aesthetic. The lighting is soft and high-key, creating a crisp light-mode atmosphere with cool blue and white tones throughout the composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA50ngmVYQX4cGTKOsLPR-falkf8YxrjQEUGZ69FRzr-BhdJqSOlxN_AiNn7AC8zIXRRkIUR-VsjcWOuaggAY72lBiYmkxvQGBr4IOLw2tHXxlMbvCcfIgPK5lFnhP4KjrX7OacSYnGyWLU01_JDs8Th6ZRg2--9PBRc0xO24AnHZysco1ES0y7ayafCkKmH1rr2RWUcgrlxViVP4NoVk9cKo3gMoRNE_Bx3-ZMfJx6ie1PY4F63HVP_bS9bAH8_PGh7u6TWzcbvY"/>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white font-['Inter']">SmartInventory</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full transition-all duration-200 ease-in-out active:scale-95 text-slate-500 hover:bg-slate-50">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-28 px-margin-mobile max-w-7xl mx-auto">
+<!-- Search & Filter Bar -->
+<section class="mb-lg">
+<div class="flex flex-col gap-sm">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-white border border-outline-variant rounded-xl focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all text-body-md shadow-sm outline-none" placeholder="Search inventory items..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+<span class="px-4 py-1.5 bg-primary-container text-white rounded-full text-label-md cursor-pointer shadow-md">All Items</span>
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-label-md cursor-pointer hover:bg-secondary-container/80">Groceries</span>
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-label-md cursor-pointer hover:bg-secondary-container/80">Electronics</span>
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-label-md cursor-pointer hover:bg-secondary-container/80">Home</span>
+</div>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="bento-grid mb-lg">
+<div class="col-span-2 md:col-span-4 p-4 bg-white border border-outline-variant rounded-xl shadow-sm">
+<p class="text-label-md text-outline mb-1">Total Valuation</p>
+<p class="text-numeric-lg font-numeric-lg text-primary">$42,850.00</p>
+<div class="mt-2 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+</div>
+<div class="col-span-2 md:col-span-4 p-4 bg-white border border-outline-variant rounded-xl shadow-sm">
+<p class="text-label-md text-outline mb-1">Low Stock Items</p>
+<p class="text-numeric-lg font-numeric-lg text-error">12</p>
+<p class="text-label-sm text-error mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> Needs Attention
+                </p>
+</div>
+<div class="col-span-4 md:col-span-4 p-4 bg-primary text-white rounded-xl shadow-md flex items-center justify-between">
+<div>
+<p class="text-label-md opacity-80 mb-1">Active Shipments</p>
+<p class="text-numeric-lg font-numeric-lg">04</p>
+</div>
+<span class="material-symbols-outlined text-4xl opacity-40" data-icon="local_shipping">local_shipping</span>
+</div>
+</section>
+<!-- Inventory List -->
+<section class="space-y-4">
+<div class="flex items-center justify-between mb-2 px-1">
+<h2 class="text-headline-sm font-headline-sm">Inventory Dashboard</h2>
+<button class="text-primary text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">sort</span> Sort
+                </button>
+</div>
+<!-- Item Card: Low Stock -->
+<div class="bg-white border-l-4 border-l-error border border-outline-variant rounded-xl p-4 shadow-sm group hover:border-error/50 transition-all">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-lg bg-surface-container flex items-center justify-center overflow-hidden">
+<img alt="Item" class="w-full h-full object-cover" data-alt="A professional product shot of a sleek modern laptop on a clean white desk, surrounded by minimalist office decor. The lighting is soft and diffused, creating subtle shadows and a premium tech aesthetic. The overall color palette consists of cool grays, whites, and metallic silvers, maintaining the clean Corporate/Modern design theme of the application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrag9b3YxBxUhWpNnjEUdfayiLz8nhFp39bXI2jg9YaR6pjsiBDjrJwRjMLz1T5L3CGGbYqwzYHUzPepRPr3NvOhm-8MVV9Yd3at9w8-eM5B00XxKCXDZBBsZsAvhCG-RPf555-5rGs_5BdocFjQ5ywf2WhCaHH7RSmMxjwjn1sFj2ald7M0I8jb0TKLPM_JlR2VKNDcFu8kpISBp9GxjkrhBe685zIg4vPya8XuYWAnCeIA4VRQT2Gn-JqrEnuS6VAf5C_qi7zRw"/>
+</div>
+<div>
+<h3 class="text-body-lg font-semibold text-on-surface">ProBook 14 Gen 2</h3>
+<span class="inline-block px-2 py-0.5 bg-surface-container text-on-surface-variant rounded text-label-sm mb-1">Electronics</span>
+<div class="flex items-center gap-4 mt-2">
+<p class="text-body-md font-medium text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">inventory</span> 02 left
+                                </p>
+<p class="text-body-md font-medium text-on-surface">$1,299.00</p>
+</div>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item Card: Healthy Stock -->
+<div class="bg-white border border-outline-variant rounded-xl p-4 shadow-sm group hover:border-primary transition-all">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-lg bg-surface-container flex items-center justify-center overflow-hidden">
+<img alt="Item" class="w-full h-full object-cover" data-alt="A high-quality studio photograph of fresh, organic bell peppers in vibrant red, yellow, and green colors, arranged artistically on a white surface. The lighting is bright and clear, highlighting the natural textures and colors. The style is professional and clean, fitting perfectly into a modern fintech or inventory management interface with a light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5Bt0kcTJQ4tMc-gZceSR3dRvtGc6whRQQkrWjkd74pWGNE1zsCg9QC4nE3S8osDC-VfP-vrK8uiA5lLABQ2meIqrXbMdS3H3GOrQGC281ua2tJHAcJxYPotm2-SjWwyhHyIhg3XWKqfh3LXXUxzS1NZ4rnDqYToQauRSo71oSlRmyDU1XwjiwSa_rswusR_OkhneBCnabJwzxwUIn7i4e6bhWu7RfkV4NB41aPRb5JQ2OqD2MVW6SZ6h8veILA0shlOyzFN8tqfw"/>
+</div>
+<div>
+<h3 class="text-body-lg font-semibold text-on-surface">Fresh Bell Peppers</h3>
+<span class="inline-block px-2 py-0.5 bg-surface-container text-on-surface-variant rounded text-label-sm mb-1">Groceries</span>
+<div class="flex items-center gap-4 mt-2">
+<p class="text-body-md font-medium text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">inventory</span> 45 in stock
+                                </p>
+<p class="text-body-md font-medium text-on-surface">$2.50/ea</p>
+</div>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item Card: Healthy Stock -->
+<div class="bg-white border border-outline-variant rounded-xl p-4 shadow-sm group hover:border-primary transition-all">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-lg bg-surface-container flex items-center justify-center overflow-hidden">
+<img alt="Item" class="w-full h-full object-cover" data-alt="A clean, minimalist product photograph of a modern glass olive oil bottle with a dark wooden stopper, set against a pristine off-white background. The lighting is soft, creating elegant highlights on the glass. The composition reflects high-end retail and modern supply chain management, maintaining the sophisticated corporate light-mode visual language of the application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3Vt5lw9J6507SFrbwgK2irGMnbsIkdwgd9KWE-h7w_kqNIW5IXlH3324qDyyxFbt8-WcPnjKpBf4yjQ-LMIhWMO4pRiIYtNYmTiGMoOgx-AphPohZkNklLLIQ9LR9TWxWnBrqXbmz4lyCWDXx1guy4WnHfyQzuLvm-CT6AYS9qY4_Pixkhrb0jkKJLuD8fCGyKnan6Zc-i2BfZc63wMdJxUGPEYiAfsFjxOjpxBwkY-tvkLdFmkkzFIByd6ap3umWZ1hZa6nj7r8"/>
+</div>
+<div>
+<h3 class="text-body-lg font-semibold text-on-surface">Artisan Olive Oil</h3>
+<span class="inline-block px-2 py-0.5 bg-surface-container text-on-surface-variant rounded text-label-sm mb-1">Groceries</span>
+<div class="flex items-center gap-4 mt-2">
+<p class="text-body-md font-medium text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">inventory</span> 18 in stock
+                                </p>
+<p class="text-body-md font-medium text-on-surface">$24.95</p>
+</div>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item Card: Low Stock -->
+<div class="bg-white border-l-4 border-l-error border border-outline-variant rounded-xl p-4 shadow-sm group hover:border-error/50 transition-all">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-lg bg-surface-container flex items-center justify-center overflow-hidden">
+<img alt="Item" class="w-full h-full object-cover" data-alt="A premium studio shot of wireless noise-canceling headphones in matte black, positioned gracefully on a soft gray surface. The lighting is dramatic but clean, highlighting the smooth contours and high-quality materials. This visual represents a modern electronics inventory item, consistent with the corporate high-contrast design system and the elegant light-mode user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2RRRLrg43n-8jQ_CKHSaEmynNP-IMlfR9O9KJVf0nFWHBf6PtIWH02SGdxn6yTyvrPaQ69bt5S26t2EFU2ot0lFc9mKENyBD_IAhgqeN0-8ue7ZXHx1_wICYCggW-er8uexa2kVY8gPl6289R8B6qsNGe1yh9BG0RA9VzNES7W-wJ2FfgMfFyp9f7w6jDOCCvhSTLNCX3IVMibZRqNm1JrMs9UWq3e2gQBmN_LXdgmNlh0Rjvpy4Q9AwNSapMXFT6e04jEGuQQ2E"/>
+</div>
+<div>
+<h3 class="text-body-lg font-semibold text-on-surface">Audio-X Wireless</h3>
+<span class="inline-block px-2 py-0.5 bg-surface-container text-on-surface-variant rounded text-label-sm mb-1">Electronics</span>
+<div class="flex items-center gap-4 mt-2">
+<p class="text-body-md font-medium text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">inventory</span> 01 left
+                                </p>
+<p class="text-body-md font-medium text-on-surface">$299.00</p>
+</div>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB for 'Add Item' -->
+<button class="fixed right-6 bottom-24 w-14 h-14 bg-primary text-white rounded-2xl shadow-xl flex items-center justify-center transition-transform duration-150 active:scale-90 z-50">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- BottomNavBar (Inventory active) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 rounded-t-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+<div class="flex justify-around items-center h-20 pb-safe px-6 w-full">
+<a class="flex flex-col items-center justify-center text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-900/20 rounded-xl px-3 py-1 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-['Inter'] text-[11px] font-medium">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-['Inter'] text-[11px] font-medium">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['Inter'] text-[11px] font-medium">Budget</span>
+</a>
+</div>
+</nav>
+</body></html>

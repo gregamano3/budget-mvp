@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "outline-variant": "#c7c4d8",
+                  "primary-container": "#4f46e5",
+                  "surface-tint": "#4d44e3",
+                  "tertiary-container": "#885500",
+                  "surface-container-highest": "#d3e4fe",
+                  "tertiary-fixed": "#ffddb8",
+                  "on-tertiary-container": "#ffd4a4",
+                  "secondary": "#006a61",
+                  "on-primary-fixed-variant": "#3323cc",
+                  "on-error": "#ffffff",
+                  "error": "#ba1a1a",
+                  "primary-fixed-dim": "#c3c0ff",
+                  "on-surface": "#0b1c30",
+                  "secondary-fixed-dim": "#6bd8cb",
+                  "error-container": "#ffdad6",
+                  "surface-container-high": "#dce9ff",
+                  "surface-dim": "#cbdbf5",
+                  "on-surface-variant": "#464555",
+                  "inverse-on-surface": "#eaf1ff",
+                  "surface": "#f8f9ff",
+                  "on-primary-fixed": "#0f0069",
+                  "surface-container-low": "#eff4ff",
+                  "secondary-container": "#86f2e4",
+                  "outline": "#777587",
+                  "primary-fixed": "#e2dfff",
+                  "on-secondary-fixed-variant": "#005049",
+                  "on-secondary": "#ffffff",
+                  "inverse-surface": "#213145",
+                  "background": "#f8f9ff",
+                  "tertiary-fixed-dim": "#ffb95f",
+                  "on-tertiary-fixed-variant": "#653e00",
+                  "tertiary": "#684000",
+                  "on-tertiary": "#ffffff",
+                  "surface-container": "#e5eeff",
+                  "on-tertiary-fixed": "#2a1700",
+                  "primary": "#3525cd",
+                  "on-secondary-fixed": "#00201d",
+                  "surface-container-lowest": "#ffffff",
+                  "on-error-container": "#93000a",
+                  "on-primary-container": "#dad7ff",
+                  "inverse-primary": "#c3c0ff",
+                  "surface-bright": "#f8f9ff",
+                  "secondary-fixed": "#89f5e7",
+                  "surface-variant": "#d3e4fe",
+                  "on-secondary-container": "#006f66",
+                  "on-background": "#0b1c30",
+                  "on-primary": "#ffffff"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "xs": "4px",
+                  "margin-mobile": "16px",
+                  "md": "16px",
+                  "lg": "24px",
+                  "unit": "4px",
+                  "gutter-mobile": "12px",
+                  "sm": "8px",
+                  "xl": "32px"
+          },
+          "fontFamily": {
+                  "display-md": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "body-md": ["Inter"],
+                  "headline-sm": ["Inter"],
+                  "label-md": ["Inter"],
+                  "display-lg": ["Inter"],
+                  "label-sm": ["Inter"],
+                  "numeric-lg": ["Inter"]
+          },
+          "fontSize": {
+                  "display-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                  "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                  "numeric-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-background selection:bg-primary-fixed min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between px-4 h-16 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young entrepreneur in a modern office setting. The lighting is soft and natural, emphasizing a clean and approachable professional persona. The background is slightly blurred with subtle hints of indoor greenery and high-end office furniture, maintaining a light-mode corporate aesthetic. The overall mood is confident, clean, and organized." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw2xsUZDnco3YFvTmaRxa8kZklonPZGvniAFSrxjdjCp57E9zlhu4P7LANeNj4V_urE9-KVMunVlSNeU9mIjgwTHMJfMVxTISQZCr-s4JMzKMQU61nTN58NXtKPdCLyzcNG8PnKLJ_aPNwTeQQD-IVOIjqIb7qZfIz3COoFbMJlIPJmv8Ao0OEuW5_-9402oqeCroRJDtIWoK4rjyLxH0v3B0CSZSg8kBljDuUXCYs32Hw1RWd8kc8M9W7zBWY1z5iGmc0jba1C0M"/>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white font-['Inter'] antialiased">SmartInventory</h1>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out active:scale-95 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="pt-24 px-margin-mobile max-w-5xl mx-auto space-y-lg">
+<!-- Hero Metric Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Total Inventory Value Card -->
+<div class="bg-primary-container p-lg rounded-xl text-on-primary-container shadow-sm border border-primary relative overflow-hidden">
+<div class="relative z-10">
+<p class="font-label-md text-label-md opacity-80 mb-xs">TOTAL INVENTORY VALUE</p>
+<h2 class="font-numeric-lg text-display-lg mb-sm">$482,950.00</h2>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="font-label-md text-label-md">+12.5% from last month</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="inventory_2">inventory_2</span>
+</div>
+</div>
+<!-- Budget Remaining Card -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-md">
+<div>
+<p class="font-label-md text-label-md text-outline mb-xs">REMAINING BUDGET</p>
+<h2 class="font-numeric-lg text-numeric-lg text-on-surface">$14,200.00</h2>
+</div>
+<div class="bg-tertiary-container/10 p-sm rounded-lg">
+<span class="material-symbols-outlined text-tertiary" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-md text-label-sm text-on-surface-variant">
+<span>Monthly Allocation</span>
+<span>71% Used</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 71%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Stats Bento -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant/30 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="package_2">package_2</span>
+<span class="font-numeric-lg text-headline-sm text-on-surface">1,284</span>
+<span class="font-label-sm text-label-sm text-outline">SKUs Active</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant/30 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-error mb-xs" data-icon="priority_high">priority_high</span>
+<span class="font-numeric-lg text-headline-sm text-error">12</span>
+<span class="font-label-sm text-label-sm text-outline">Low Stock</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant/30 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-xs" data-icon="local_shipping">local_shipping</span>
+<span class="font-numeric-lg text-headline-sm text-on-surface">8</span>
+<span class="font-label-sm text-label-sm text-outline">In Transit</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant/30 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant mb-xs" data-icon="assignment_return">assignment_return</span>
+<span class="font-numeric-lg text-headline-sm text-on-surface">3</span>
+<span class="font-label-sm text-label-sm text-outline">Pending Returns</span>
+</div>
+</section>
+<!-- Content Split Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Recent Transactions List -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Transactions</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">View All</button>
+</div>
+<div class="divide-y divide-outline-variant/50">
+<!-- Item 1 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="add_circle">add_circle</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Logitech MX Master 3S</p>
+<p class="font-label-sm text-label-sm text-outline">Added 50 units to Main Warehouse</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">+$4,950.00</p>
+<p class="font-label-sm text-label-sm text-outline">2 mins ago</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="remove_circle">remove_circle</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Apple MacBook Pro 14"</p>
+<p class="font-label-sm text-label-sm text-outline">Dispatched 5 units to Client B</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">-$9,995.00</p>
+<p class="font-label-sm text-label-sm text-outline">1 hour ago</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="swap_horiz">swap_horiz</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Dell UltraSharp 27"</p>
+<p class="font-label-sm text-label-sm text-outline">Transfer: Warehouse A → Store 4</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">12 Units</p>
+<p class="font-label-sm text-label-sm text-outline">3 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Warehouse Snapshot Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg flex flex-col space-y-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Warehouse Snapshot</h3>
+<div class="relative aspect-square w-full rounded-lg overflow-hidden border border-outline-variant">
+<img alt="Warehouse Overview" class="w-full h-full object-cover" data-alt="A wide-angle shot of a high-tech, modern warehouse with organized shelving units and automated machinery. The lighting is bright and clean with a cool blue and white palette, reflecting a high-efficiency environment. Digital interfaces are visible on tablets mounted to shelving. The scene is immaculate, showcasing orderly industrial precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRO1R0rpKDyvaZNeO8YTA-5Wh2y9eTd_x3_tX-YGcy69fDPbbX4imXIYhW906RRc1ctSk8bQNcE_zp6-HTm6cFuHwunflPC90CArRFFMwzoWfGznBP2INpPZyhMKKdZwMzb235FJBf7uXuBNIQnjyZ0dthQDslqwkF7frM5zJ0ME-_sHExhIbG6Boc86TYr0du5VPpEqMQlg_sONLp22_hO8vY-7k95RWrkVxVwDVq-u4rkIJxDn_2LE2iuv1sO8JK6TOFn2yyTIk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-md">
+<div class="text-white">
+<p class="font-label-md text-label-md uppercase tracking-wider">Main Hub - Sector 7</p>
+<p class="font-body-md text-xs opacity-90">Capacity: 92% (High Load)</p>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center text-sm">
+<span class="text-outline">Active Shipments</span>
+<span class="font-bold text-on-surface">24</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-outline">Daily Throughput</span>
+<span class="font-bold text-on-surface">1.2k units</span>
+</div>
+<button class="w-full py-sm bg-primary text-on-primary font-label-md text-label-md rounded-lg mt-md shadow-sm active:scale-95 transition-transform">
+            OPEN FLOOR MAP
+          </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 rounded-t-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around items-center h-20 pb-safe px-6 w-full">
+<!-- Inventory Active -->
+<a class="flex flex-col items-center justify-center text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-900/20 rounded-xl px-3 py-1 transition-transform duration-150 active:scale-90 font-['Inter'] text-[11px] font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span>Inventory</span>
+</a>
+<!-- Scan Inactive -->
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-transform duration-150 active:scale-90 font-['Inter'] text-[11px] font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span>Scan</span>
+</a>
+<!-- Budget Inactive -->
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-transform duration-150 active:scale-90 font-['Inter'] text-[11px] font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Budget</span>
+</a>
+</nav>
+<!-- Contextual Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-[28px]" data-icon="add" style="font-variation-settings: 'wght' 600;">add</span>
+</button>
+</body></html>
