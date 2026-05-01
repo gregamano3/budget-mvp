@@ -42,19 +42,19 @@ interface ExtractionResult {
 
 async function extractReceiptText(imageUri: string): Promise<ExtractionResult> {
   try {
-    const result = await MlkitOcr.recognize(imageUri);
+    const result = await MlkitOcr.recognizeText(imageUri);
     
     let total = 0;
     const items: ExtractedItem[] = [];
     let storeName = "Scanned Receipt";
     
-    if (result.length > 0) {
-      storeName = result[0].text.split('\n')[0];
+    if (result.blocks && result.blocks.length > 0) {
+      storeName = result.blocks[0].text.split('\n')[0];
     }
 
     const priceRegex = /\$?(\d+\.\d{2})/;
     
-    for (const block of result) {
+    for (const block of result.blocks || []) {
       const lines = block.text.split('\n');
       for (let i = 0; i < lines.length; i++) {
          const line = lines[i];
@@ -352,6 +352,7 @@ export default function ScanScreen() {
                     <Text style={styles.itemPrice}>${item.price.toFixed(2)}</Text>
                   </>
                 )}
+              </View>
             ))}
 
             {/* Total */}

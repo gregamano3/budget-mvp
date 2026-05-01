@@ -20,8 +20,8 @@ import { useAuthStore } from "../../store/useAuthStore";
 import { Colors, Typography, Spacing, BorderRadius, Elevation } from "../../constants/theme";
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@example.com");
+  const [password, setPassword] = useState("123456789");
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailFocused, setEmailFocused] = useState(false);
