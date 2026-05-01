@@ -135,7 +135,7 @@ export default function InventoryScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={["top"]}>
+    <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
@@ -249,12 +249,19 @@ export default function InventoryScreen() {
         }
       />
 
-      {/* FAB */}
-      <Link href="/(tabs)/item/new" asChild>
-        <TouchableOpacity style={styles.fab} activeOpacity={0.85}>
-          <MaterialIcons name="add" size={28} color={Colors.onPrimary} />
-        </TouchableOpacity>
-      </Link>
+      {/* FABs */}
+      <View style={styles.fabContainer}>
+        <Link href="/(tabs)/scan" asChild>
+          <TouchableOpacity style={[styles.fab, styles.fabSecondary]} activeOpacity={0.85}>
+            <MaterialIcons name="qr-code-scanner" size={24} color={Colors.primary} />
+          </TouchableOpacity>
+        </Link>
+        <Link href="/(tabs)/item/new" asChild>
+          <TouchableOpacity style={styles.fab} activeOpacity={0.85}>
+            <MaterialIcons name="add" size={28} color={Colors.onPrimary} />
+          </TouchableOpacity>
+        </Link>
+      </View>
     </SafeAreaView>
   );
 }
@@ -382,10 +389,14 @@ const styles = StyleSheet.create({
   menuButton: { padding: Spacing.sm },
   emptyState: { alignItems: "center", paddingTop: 60 },
   emptyText: { ...Typography.bodyMd, color: Colors.outline, marginTop: Spacing.sm },
-  fab: {
+  fabContainer: {
     position: "absolute",
     bottom: Platform.OS === "ios" ? 100 : 80,
     right: Spacing.lg,
+    gap: Spacing.md,
+    alignItems: "center",
+  },
+  fab: {
     width: 56,
     height: 56,
     borderRadius: BorderRadius.lg,
@@ -393,5 +404,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     ...Elevation.level2,
+  },
+  fabSecondary: {
+    width: 48,
+    height: 48,
+    backgroundColor: Colors.surfaceContainerLowest,
+    borderWidth: 1,
+    borderColor: Colors.outlineVariant + "40",
   },
 });

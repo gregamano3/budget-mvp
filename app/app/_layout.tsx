@@ -14,6 +14,7 @@ import {
   Inter_700Bold,
 } from "@expo-google-fonts/inter";
 import * as SplashScreen from "expo-splash-screen";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useAuthStore } from "../store/useAuthStore";
 import { Colors } from "../constants/theme";
 
@@ -63,10 +64,10 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <SafeAreaProvider>
       <Slot />
       <StatusBar style="dark" />
-    </>
+    </SafeAreaProvider>
   );
 }
 
