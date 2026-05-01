@@ -8,6 +8,7 @@ import { useState, useRef } from "react";
 import {
   View,
   Text,
+  TextInput,
   TouchableOpacity,
   StyleSheet,
   ScrollView,
@@ -110,9 +111,31 @@ export default function ScanScreen() {
   const [permission, requestPermission] = useCameraPermissions();
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const [extraction, setExtraction] = useState<ExtractionResult | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
   const [flashEnabled, setFlashEnabled] = useState(false);
   const cameraRef = useRef<CameraView>(null);
   const addFromReceipt = useInventoryStore((s) => s.addFromReceipt);
+
+  const updateItemPrice = (id: string, priceStr: string) => {
+    if (!extraction) return;
+    const price = parseFloat(priceStr.replace(/[^0-9.]/g, '')) || 0;
+    const items = extraction.items.map(item => item.id === id ? { ...item, price } : item);
+    const total = items.reduce((sum, item) => sum + item.price, 0);
+    setExtraction({ ...extraction, items, total });
+  };
+
+  const updateItemName = (id: string, name: string) => {
+    if (!extraction) return;
+    const items = extraction.items.map(item => item.id === id ? { ...item, name } : item);
+    setExtraction({ ...extraction, items });
+  };
+
+  const removeItem = (id: string) => {
+    if (!extraction) return;
+    const items = extraction.items.filter(item => item.id !== id);
+    const total = items.reduce((sum, item) => sum + item.price, 0);
+    setExtraction({ ...extraction, items, total });
+  };
 
   const handleCapture = async () => {
     if (!cameraRef.current) return;
@@ -162,6 +185,7 @@ export default function ScanScreen() {
   const handleDiscard = () => {
     setCapturedImage(null);
     setExtraction(null);
+    setIsEditing(false);
   };
 
   // ─── Permission Not Granted ────────────────────────────
@@ -266,9 +290,9 @@ export default function ScanScreen() {
                 <MaterialIcons name="verified" size={24} color={Colors.primary} />
                 <Text style={styles.resultsTitle}>Extraction Results</Text>
               </View>
-              <TouchableOpacity style={styles.editButton}>
-                <MaterialIcons name="edit" size={16} color={Colors.primary} />
-                <Text style={styles.editButtonText}>Manual Correction</Text>
+              <TouchableOpacity style={styles.editButton} onPress={() => setIsEditing(!isEditing)}>
+                <MaterialIcons name={isEditing ? "check" : "edit"} size={16} color={Colors.primary} />
+                <Text style={styles.editButtonText}>{isEditing ? "Done Editing" : "Manual Correction"}</Text>
               </TouchableOpacity>
             </View>
 
@@ -296,14 +320,38 @@ export default function ScanScreen() {
                   idx < extraction.items.length - 1 && styles.itemRowBorder,
                 ]}
               >
-                <View>
-                  <Text style={styles.itemName}>{item.name}</Text>
-                  <Text style={styles.itemMeta}>
-                    Qty: {item.quantity} • SKU: {item.sku}
-                  </Text>
-                </View>
-                <Text style={styles.itemPrice}>${item.price.toFixed(2)}</Text>
-              </View>
+                {isEditing ? (
+                  <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+                    <TouchableOpacity onPress={() => removeItem(item.id)} style={{ paddingRight: 8 }}>
+                      <MaterialIcons name="remove-circle-outline" size={20} color={Colors.error} />
+                    </TouchableOpacity>
+                    <View style={{ flex: 1, marginRight: 8, borderBottomWidth: 1, borderBottomColor: Colors.outlineVariant }}>
+                      <TextInput 
+                        style={[styles.itemName, { padding: 0 }]} 
+                        value={item.name} 
+                        onChangeText={(t) => updateItemName(item.id, t)} 
+                      />
+                    </View>
+                    <View style={{ width: 60, borderBottomWidth: 1, borderBottomColor: Colors.outlineVariant }}>
+                      <TextInput 
+                        style={[styles.itemPrice, { padding: 0 }]} 
+                        value={item.price.toString()} 
+                        keyboardType="decimal-pad" 
+                        onChangeText={(t) => updateItemPrice(item.id, t)} 
+                      />
+                    </View>
+                  </View>
+                ) : (
+                  <>
+                    <View>
+                      <Text style={styles.itemName}>{item.name}</Text>
+                      <Text style={styles.itemMeta}>
+                        Qty: {item.quantity} • SKU: {item.sku}
+                      </Text>
+                    </View>
+                    <Text style={styles.itemPrice}>${item.price.toFixed(2)}</Text>
+                  </>
+                )}
             ))}
 
             {/* Total */}

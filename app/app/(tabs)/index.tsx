@@ -17,11 +17,13 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Link, useRouter } from "expo-router";
 import { useAuthStore } from "../../store/useAuthStore";
 import { useInventoryStore, InventoryItem } from "../../store/useInventoryStore";
 import { Colors, Typography, Spacing, BorderRadius, Elevation } from "../../constants/theme";
 
 export default function InventoryScreen() {
+  const router = useRouter();
   const user = useAuthStore((s) => s.user);
   const {
     items,
@@ -118,9 +120,15 @@ export default function InventoryScreen() {
 
         <TouchableOpacity
           style={styles.menuButton}
+          onPress={() => router.push(`/(tabs)/item/${item.id}`)}
+        >
+          <MaterialIcons name="edit" size={22} color={Colors.outline} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.menuButton}
           onPress={() => handleDelete(item)}
         >
-          <MaterialIcons name="more-vert" size={22} color={Colors.outline} />
+          <MaterialIcons name="delete-outline" size={22} color={Colors.error} />
         </TouchableOpacity>
       </View>
     );
@@ -242,9 +250,11 @@ export default function InventoryScreen() {
       />
 
       {/* FAB */}
-      <TouchableOpacity style={styles.fab} activeOpacity={0.85}>
-        <MaterialIcons name="add" size={28} color={Colors.onPrimary} />
-      </TouchableOpacity>
+      <Link href="/(tabs)/item/new" asChild>
+        <TouchableOpacity style={styles.fab} activeOpacity={0.85}>
+          <MaterialIcons name="add" size={28} color={Colors.onPrimary} />
+        </TouchableOpacity>
+      </Link>
     </SafeAreaView>
   );
 }
